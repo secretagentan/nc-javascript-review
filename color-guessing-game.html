@@ -15,19 +15,47 @@
 		<script>
 			const COLORS_ARRAY = ['blue', 'cyan', 'gold', 'gray', 'green', 'magenta', 'orange', 'red', 'white', 'yellow'];
 
-			         function runGame() {
-			             let guess = '';
-			             let correct = false;
+			function runGame() {
+				let guess = '';
+				let correct = false;
+				let numTries = 0;
 
-			             const targetIndex = Math.floor(Math.random() * (COLORS_ARRAY.length));
+				const targetIndex = Math.floor(Math.random() * COLORS_ARRAY.length);
+				console.log(targetIndex);
 
-			                      console.log(targetIndex);
-			                     console.log(COLORS_ARRAY[targetIndex]);
-			         };
+				let target = COLORS_ARRAY[targetIndex];
+				console.log(target);
 
-			         function checkGuess() {
+				do {
+					guess = prompt(`I am thinking of one of these colors:\n\n${COLORS_ARRAY.join(', ')}\n\nWhat color am I thinking of?\n\n`)
 
-			         };
+					if (guess === null) {
+						alert('Prompt has been canceled.');
+						return;
+					} else {
+						numTries++;
+						correct = checkGuess(guess, target);
+					};
+				} while (!correct);
+
+				document.body.style.background = guess;
+				alert(`Congratulations! You've guessed the correct color.\n\nNumber of tries: ${numTries}`)
+			};
+
+			function checkGuess(guess, target) {
+				let correct = false;
+
+				if (!COLORS_ARRAY.includes(guess)) {
+					alert('Sorry, color not recognized.\n\nPlease try again.');
+				} else if (guess > target) {
+					alert('Sorry, your guess is incorrect.\n\nHint: your color is alphabetically higher than mine.\n\nPlease try again.')
+				} else if (guess < target) {
+					alert('Sorry, your guess is incorrect.\n\nHint: your color is alphabetically lower than mine.\n\nPlease try again.')
+				} else {
+					correct = true;
+				}
+				return correct;
+			};
 		</script>
 	</body>
 </html>
