@@ -34,13 +34,16 @@ class Bootcamp {
     }
 
     // TASK 4
-    // listStudents() {
-    //     if (this.students.length === 0)
-    //         console.log(`No students are registered to the ${this.name} bootcamp.`);
-    //     return false;
-    // }
+    listStudents() {
+        if (!this.students.length) {
+            console.log(`No students are registered to the ${this.name} bootcamp.`);
+            return false;
+        }
+        console.log(`The students registered in ${this.name} are: `);
+        this.students.forEach(student => console.log(`Name: ${student.name}, Email: ${student.email}`));
+        return true;
+    }
 }
-
 
 // TASK 1 TEST
 testStudent = new Student('Bugs Bunny', 'bugs@bunny.com');
@@ -66,8 +69,15 @@ const runTest = (bootcamp, student) => {
     if (attemptOne && !attemptTwo && !attemptThree) {
         console.log("TASK 3: PASS");
     }
+
+    // TASK 4 TEST
+    bootcamp.registerStudent(new Student('Babs Bunny', 'babs@bunny.com'));
+    if (bootcamp.listStudents()) {
+        console.log("TASK 4: PASS 1/2");
+    }
+    bootcamp.students = [];
+    if (!bootcamp.listStudents()) {
+        console.log("TASK 4: PASS 2/2");
+    }
 };
 runTest(reactBootcamp, testStudent);
-
-
-
