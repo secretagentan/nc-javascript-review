@@ -1,3 +1,4 @@
+// TASK 1
 class Student {
     constructor(name, email) {
         this.name = name;
@@ -5,6 +6,7 @@ class Student {
     }
 }
 
+// TASK 2
 class Bootcamp {
     constructor(name, level, students = []) {
         this.name = name;
@@ -12,6 +14,7 @@ class Bootcamp {
         this.students = students;
     }
 
+    // TASK 3
     registerStudent(studentToRegister) {
         if (!studentToRegister.name || !studentToRegister.email) {
             console.log('Invalid name or email.');
@@ -30,6 +33,7 @@ class Bootcamp {
         return true;
     }
 
+    // TASK 4
     // listStudents() {
     //     if (this.students.length === 0)
     //         console.log(`No students are registered to the ${this.name} bootcamp.`);
@@ -38,7 +42,7 @@ class Bootcamp {
 }
 
 
-// task 1 test
+// TASK 1 TEST
 testStudent = new Student('Bugs Bunny', 'bugs@bunny.com');
 console.log(testStudent);
 
@@ -46,7 +50,7 @@ if (testStudent.name === 'Bugs Bunny' && testStudent.email === 'bugs@bunny.com')
     console.log('TASK 1: PASS');
 }
 
-// task 2 test
+// TASK 2 TEST
 reactBootcamp = new Bootcamp("React", "Advanced");
 console.log(reactBootcamp);
 
@@ -54,7 +58,7 @@ if (reactBootcamp.name === 'React' && reactBootcamp.level === 'Advanced' && Arra
     console.log('TASK 2: PASS');
 }
 
-// task 3 test
+// TASK 3 TEST
 const runTest = (bootcamp, student) => {
     const attemptOne = bootcamp.registerStudent(student);
     const attemptTwo = bootcamp.registerStudent(student);
